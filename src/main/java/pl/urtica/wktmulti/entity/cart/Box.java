@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class Box {
 
     private BoxDimension boxDimension;
+    private Integer  ckk;
 
 }

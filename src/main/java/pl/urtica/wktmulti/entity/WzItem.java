@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.urtica.wktmulti.entity.cart.CartPosition;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,5 +24,8 @@ public class WzItem implements EntityClass
     private String ean;
     private String gtin;
     private Boolean isGTIN;
+
+    private CartPosition cartPosition;
+    private boolean isOnCart;
 
 }

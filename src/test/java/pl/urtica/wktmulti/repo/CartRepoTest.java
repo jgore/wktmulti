@@ -10,9 +10,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import pl.urtica.wktmulti.entity.cart.Box;
 import pl.urtica.wktmulti.entity.cart.BoxDimension;
 import pl.urtica.wktmulti.entity.cart.Cart;
-import pl.urtica.wktmulti.entity.cart.Position;
+import pl.urtica.wktmulti.entity.cart.CartPosition;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -29,10 +30,18 @@ public class CartRepoTest {
     @Before
     public void setup() {
 
-        Map<Position, Box> positionBoxMap = new HashMap<>();
+        Map<CartPosition, Box> positionBoxMap = new HashMap<>();
 
-        positionBoxMap.put(Position.p1_1, Box.builder().boxDimension(BoxDimension.BIG).build());
-        positionBoxMap.put(Position.p1_2, Box.builder().boxDimension(BoxDimension.BIG).build());
+        List<Cart> all = cartRepo.findAll();
+
+        positionBoxMap.put(CartPosition.p1_1, Box.builder()
+                .boxDimension(BoxDimension.BIG)
+                .ckk(1)
+                .build());
+        positionBoxMap.put(CartPosition.p1_2, Box.builder()
+                .boxDimension(BoxDimension.BIG)
+                .ckk(2)
+                .build());
 
         Cart cart = Cart.builder()
                 .code("1")
@@ -41,28 +50,28 @@ public class CartRepoTest {
 
         Cart saved = cartRepo.save(cart);
 
-        assertThat( saved.getBoxPositionMap().get(Position.p1_1).getBoxDimension(), equalTo(BoxDimension.BIG));
+        assertThat( saved.getBoxPositionMap().get(CartPosition.p1_1).getBoxDimension(), equalTo(BoxDimension.BIG));
     }
 
     @Test
     public void createBigCart()
     {
-        Map<Position, Box> positionBoxMap = new HashMap<>();
+        Map<CartPosition, Box> positionBoxMap = new HashMap<>();
 
-        positionBoxMap.put(Position.p1_1, Box.builder().boxDimension(BoxDimension.BIG).build());
-        positionBoxMap.put(Position.p1_2, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p1_1, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p1_2, Box.builder().boxDimension(BoxDimension.BIG).build());
 
-        positionBoxMap.put(Position.p2_1, Box.builder().boxDimension(BoxDimension.BIG).build());
-        positionBoxMap.put(Position.p2_2, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p2_1, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p2_2, Box.builder().boxDimension(BoxDimension.BIG).build());
 
-        positionBoxMap.put(Position.p3_1, Box.builder().boxDimension(BoxDimension.BIG).build());
-        positionBoxMap.put(Position.p3_2, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p3_1, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p3_2, Box.builder().boxDimension(BoxDimension.BIG).build());
 
-        positionBoxMap.put(Position.p4_1, Box.builder().boxDimension(BoxDimension.BIG).build());
-        positionBoxMap.put(Position.p4_2, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p4_1, Box.builder().boxDimension(BoxDimension.BIG).build());
+        positionBoxMap.put(CartPosition.p4_2, Box.builder().boxDimension(BoxDimension.BIG).build());
 
         Cart cart = Cart.builder()
-                .code("1")
+                .code("2")
                 .boxPositionMap(positionBoxMap)
                 .build();
 
@@ -73,6 +82,6 @@ public class CartRepoTest {
 
     @After
     public void reset() {
-        //cartRepo.deleteAll();
+        cartRepo.deleteAll();
     }
 }

@@ -1,6 +1,6 @@
 package pl.urtica.wktmulti.entity.cart;
 
-public enum Position {
+public enum CartPosition {
 
     p1_1(1, 1),
     p1_2(1, 2),
@@ -34,6 +34,6 @@ public enum Position {
     private int x;
     private int y;
 
-    Position(int x, int y) {
+    CartPosition(int x, int y) {
     }
 }
