@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Document
 @Builder(toBuilder = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document
 public class Wz implements EntityClass {
 
     @Id
@@ -24,7 +24,7 @@ public class Wz implements EntityClass {
     private Integer documentId;
     private String formattedNumber;
     private Integer ckk;
-    private Integer volume;
+    private Integer dimension;
     private LocalDateTime creationDate;
     private List<WzItem> items = new ArrayList<>();
 }

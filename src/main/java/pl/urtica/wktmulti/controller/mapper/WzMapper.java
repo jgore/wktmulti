@@ -28,7 +28,7 @@ public class WzMapper implements Mapper<Wz, WzDto> {
                 .formattedNumber(wzDto.getFormattedNumber())
                 .ckk(wzDto.getCkk())
                 .creationDate(wzDto.getCreationDate())
-                .volume(wzDto.getVolume())
+                .dimension(wzDto.getDimension())
                 .documentId(wzDto.getDocumentId())
                 .items(convertDtoItems(wzDto))
                 .build();
@@ -41,7 +41,7 @@ public class WzMapper implements Mapper<Wz, WzDto> {
                 .formattedNumber(wz.getFormattedNumber())
                 .ckk(wz.getCkk())
                 .creationDate(wz.getCreationDate())
-                .volume(wz.getVolume())
+                .dimension(wz.getDimension())
                 .documentId(wz.getDocumentId())
                 .items((convertItems(wz)))
                 .build();

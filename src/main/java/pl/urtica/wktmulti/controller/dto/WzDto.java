@@ -18,7 +18,7 @@ public class WzDto {
     private Integer documentId;
     private String formattedNumber;
     private Integer ckk;
-    private Integer volume;
+    private Integer dimension;
     private LocalDateTime creationDate;
     private List<WzItemDto> items = new ArrayList<>();
 }

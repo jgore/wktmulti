@@ -56,7 +56,7 @@ public class WzRepoTest {
                         .ckk(i)
                         .documentId(i)
                         .items(wzItems)
-                        .volume(1000)
+                        .dimension(1000)
                         .creationDate(LocalDateTime.now().minusDays(i))
                         .build();
 
