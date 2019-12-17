@@ -1,0 +1,15 @@
+mongodb:
+  max:
+    pool:
+      size: 300
+
+spring:
+  application:
+    name: wktmulti
+  data:
+    mongodb:
+      database:  wktmulti
+      port: 27017
+
+server:
+  port : 8080
