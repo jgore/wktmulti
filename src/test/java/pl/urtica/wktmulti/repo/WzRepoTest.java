@@ -68,7 +68,7 @@ public class WzRepoTest {
 
     @After
     public void tearDown() {
-        wzRepo.deleteAll();
+      //  wzRepo.deleteAll();
     }
 
     @Test

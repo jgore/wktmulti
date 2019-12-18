@@ -9,7 +9,6 @@ spring:
   data:
     mongodb:
       database:  wktmulti
-      port: 27017
       authentication-database: admin
       host: localhost:20007
       password: Lideo123^

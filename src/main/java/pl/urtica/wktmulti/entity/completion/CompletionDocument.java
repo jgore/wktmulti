@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import pl.urtica.wktmulti.entity.Wz;
+import pl.urtica.wktmulti.entity.Status;
 import pl.urtica.wktmulti.entity.WzItem;
-import pl.urtica.wktmulti.entity.cart.Cart;
+import pl.urtica.wktmulti.entity.cart.Box;
 import pl.urtica.wktmulti.entity.cart.CartPosition;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +27,15 @@ public class CompletionDocument {
     @Id
     private ObjectId id;
 
-    private Integer userId;
+    private String code;
 
-    private List<WzItem> sortedWzItemsList;
+    private List<WzItem> wzItemsLocalized;
 
-    private List<Wz> wzs;
+    private Map<CartPosition, Box> cartConfiguration = new HashMap<>();
 
-    private List<Integer> ckks;
+    private Status status = Status.TODO;
+
+    private LocalDateTime startDeliveryDate;
+
 
 }
