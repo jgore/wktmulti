@@ -49,7 +49,7 @@ public class WzRepoTest {
             wzItems.add(wzItem);
         }
 
-        IntStream.range(0,10).forEach( j->{
+        IntStream.range(0,1000).forEach( j->{
 
             IntStream.range(0, 1000).forEach(i -> {
                 Wz wz = Wz.builder()

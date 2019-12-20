@@ -31,6 +31,7 @@ public class CompletionActionRepoTest {
         CompletionDocument completionDocument = completionDocumentRepo.findFirstByStatusOrderByStartDeliveryDate(Status.TODO);
 
         CompletionAction action = CompletionAction.builder()
+                .userId(1)
                 .cartCode(cart.getCode())
                 .completionDocumentCode(completionDocument.getCode())
                 .build();
@@ -41,7 +42,7 @@ public class CompletionActionRepoTest {
 
     @After
     public void tearDown() {
-        //completionActionRepo.deleteAll();
+      //  completionActionRepo.deleteAll();
     }
 
     @Test
