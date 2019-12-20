@@ -27,4 +27,7 @@ public class Wz implements EntityClass {
     private Integer dimension;
     private LocalDateTime creationDate;
     private List<WzItem> items = new ArrayList<>();
+
+    @Builder.Default
+    private Status status = Status.NONE;
 }

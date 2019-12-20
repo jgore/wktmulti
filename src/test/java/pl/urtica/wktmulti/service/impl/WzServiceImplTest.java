@@ -35,14 +35,14 @@ public class WzServiceImplTest {
     @Before
     public void setup() {
         wz = Wz.builder().formattedNumber("WZ/1234/1").build();
-        when(wzRepo.getAllByCkkOrderByCreationDateAsc(anyInt(), any())).thenReturn( Arrays.asList(wz, wz));
+        when(wzRepo.getAllByCkkAndStatusOrderByCreationDateAsc(anyInt(), any(), any() )).thenReturn( Arrays.asList(wz, wz));
     }
 
 
     @Test
     public void getAllByCkkWithNoItems() {
-        List<WzDto> allByCkk = wzService.getAllByCkk(0, PageRequest.of(0, 10));
-        verify(wzRepo, times(1)).getAllByCkkOrderByCreationDateAsc(anyInt(), any());
+        List<WzDto> allByCkk = wzService.getAllByCkkWithStatus(0, any() , PageRequest.of(0, 10));
+        verify(wzRepo, times(1)).getAllByCkkAndStatusOrderByCreationDateAsc(anyInt(), any(), any() );
     }
 
     @Test
@@ -51,7 +51,7 @@ public class WzServiceImplTest {
         WzItem wzItem = WzItem.builder().gtin("1234").build();
         wz.setItems(Arrays.asList(wzItem,wzItem));
 
-        List<WzDto> allByCkk = wzService.getAllByCkk(0, PageRequest.of(0, 10));
-        verify(wzRepo, times(1)).getAllByCkkOrderByCreationDateAsc(anyInt(), any());
+        List<WzDto> allByCkk = wzService.getAllByCkkWithStatus(0, any() , PageRequest.of(0, 10));
+        verify(wzRepo, times(1)).getAllByCkkAndStatusOrderByCreationDateAsc(anyInt(), any(), any());
     }
 }

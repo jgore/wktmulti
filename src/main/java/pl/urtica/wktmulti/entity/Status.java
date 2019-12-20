@@ -1,5 +1,5 @@
 package pl.urtica.wktmulti.entity;
 
 public enum Status {
-    TODO, IN_PROGRESS, DONE
+    NONE, TODO, IN_PROGRESS, DONE
 }

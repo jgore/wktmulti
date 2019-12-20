@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.urtica.wktmulti.entity.Status;
 import pl.urtica.wktmulti.entity.Wz;
 import pl.urtica.wktmulti.entity.WzItem;
 
@@ -50,10 +51,10 @@ public class WzRepoTest {
 
         IntStream.range(0,10).forEach( j->{
 
-            IntStream.range(0, 10).forEach(i -> {
+            IntStream.range(0, 1000).forEach(i -> {
                 Wz wz = Wz.builder()
-                        .formattedNumber("WZ/1000/12")
-                        .ckk(i)
+                        .formattedNumber("WZ/1000/12/"+i+"/"+j)
+                        .ckk(j)
                         .documentId(i)
                         .items(wzItems)
                         .dimension(1000)
@@ -73,7 +74,7 @@ public class WzRepoTest {
 
     @Test
     public void testFindByCkk() {
-        List<Wz> allByCkkOrderByCreationDateAsc = wzRepo.getAllByCkkOrderByCreationDateAsc(0, PageRequest.of(0, 10));
+        List<Wz> allByCkkOrderByCreationDateAsc = wzRepo.getAllByCkkAndStatusOrderByCreationDateAsc(0, Status.NONE, PageRequest.of(0, 10 ));
 
         assertThat(allByCkkOrderByCreationDateAsc.size(), greaterThan(0));
         assertThat(allByCkkOrderByCreationDateAsc.size(), lessThan(11));

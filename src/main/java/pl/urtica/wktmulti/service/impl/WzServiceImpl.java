@@ -4,6 +4,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.urtica.wktmulti.controller.dto.WzDto;
 import pl.urtica.wktmulti.controller.mapper.WzMapper;
+import pl.urtica.wktmulti.entity.Status;
 import pl.urtica.wktmulti.entity.Wz;
 import pl.urtica.wktmulti.repo.WzRepo;
 import pl.urtica.wktmulti.service.WzService;
@@ -24,9 +25,9 @@ public class WzServiceImpl implements WzService {
     }
 
     @Override
-    public List<WzDto> getAllByCkk(Integer ckk, Pageable pageable) {
+    public List<WzDto> getAllByCkkWithStatus(Integer ckk, Status status, Pageable pageable) {
 
-        List<Wz> allByCkk = wzRepo.getAllByCkkOrderByCreationDateAsc(ckk, pageable);
+        List<Wz> allByCkk = wzRepo.getAllByCkkAndStatusOrderByCreationDateAsc(ckk, Status.TODO, pageable);
 
         return allByCkk.stream()
                 .map(wzMapper::map)

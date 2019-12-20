@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.urtica.wktmulti.controller.dto.WzDto;
+import pl.urtica.wktmulti.entity.Status;
 import pl.urtica.wktmulti.service.WzService;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class WzController {
     public ResponseEntity<List<WzDto>> getAll(@PathVariable Integer ckk, @RequestParam Integer page, @RequestParam Integer size) {
         LOGGER.info("wz by ckk is executed for ckk {} ", ckk);
 
-        List<WzDto> allByCkk = wzService.getAllByCkk(ckk, PageRequest.of(page, size));
+        List<WzDto> allByCkk = wzService.getAllByCkkWithStatus(ckk, Status.TODO, PageRequest.of(page, size));
 
         return new ResponseEntity<>(allByCkk, HttpStatus.OK);
     }

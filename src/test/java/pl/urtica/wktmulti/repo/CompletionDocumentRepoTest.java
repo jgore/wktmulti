@@ -40,7 +40,7 @@ public class CompletionDocumentRepoTest {
 
         Random random = new Random();
 
-        List<Wz> wzs = wzRepo.getAllByCkkOrderByCreationDateAsc(1, PageRequest.of(0, 10));
+        List<Wz> wzs = wzRepo.getAllByCkkAndStatusOrderByCreationDateAsc(1, Status.NONE, PageRequest.of(0, 10) );
 
         Map<CartPosition, Box> cartConfig = new HashMap<>();
 
